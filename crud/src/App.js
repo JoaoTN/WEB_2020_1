@@ -4,6 +4,7 @@ import {BrowserRouter as Router, Link, Switch, Route} from 'react-router-dom'
 
 import Inserir from './components/Inserir'
 import List from './components/List'
+import Edit from './components/Edit'
 import Home from './components/Home'
 
 
@@ -32,6 +33,7 @@ export default class App extends Component{
           <Switch>
             <Route exact path='/' component={Home}/>
             <Route path='/inserir' component={Inserir}/>
+            <Route path='/edit/:id' component={Edit}/>
             <Route path='/list' component={List}/>
           </Switch>
         </div>

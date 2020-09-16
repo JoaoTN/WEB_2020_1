@@ -27,7 +27,7 @@ export default class Inserir extends Component{
         const novaDisciplina = {nome:this.state.nome,
                                 curso:this.state.curso,
                                 capacidade:this.state.capacidade}
-        axios.post('http://localhost:3001/disciplina', novaDisciplina)
+        axios.post('http://localhost:3002/disciplinas/register', novaDisciplina)
         .then(
             (res)=>{
                 console.log('Disciplina Inserida')

@@ -5,15 +5,15 @@ import TableRow from './TableRow'
 export default class List extends Component {
     constructor(props) {
         super(props)
-        this.state = { disciplina: [] }
+        this.state = {disciplinas:[]}
 
         this.apagarElementoPorId = this.apagarElementoPorId.bind(this)
     }
     componentDidMount() {
-        axios.get('http://localhost:3001/disciplina')
+        axios.get('http://localhost:3002/disciplinas/list')
             .then(
                 (res) => {
-                    this.setState({ disciplina: res.data })
+                    this.setState({ disciplinas: res.data })
                 }
             )
             .catch(
@@ -23,21 +23,21 @@ export default class List extends Component {
             )
     }
     montarTabela() {
-        if (!this.state.disciplina) return
-        return this.state.disciplina.map(
+        if (!this.state.disciplinas) return
+        return this.state.disciplinas.map(
             (disc, i) => {
                 return <TableRow disciplina={disc} key={i} apagarElementoPorId={this.apagarElementoPorId} />
             }
         )
     }
     apagarElementoPorId(id){
-        let disciplinaTemp = this.state.disciplina
-        for(let i = 0; i < disciplinaTemp.length; i++){
-            if(disciplinaTemp[i].id === id){
-                disciplinaTemp.splice(i,1)
+        let disciplinasTemp = this.state.disciplinas
+        for(let i = 0; i < disciplinasTemp.length; i++){
+            if(disciplinasTemp[i]._id === id){
+                disciplinasTemp.splice(i,1)
             }
         }
-        this.setState({disciplina:disciplinaTemp})
+        this.setState({disciplinas:disciplinasTemp})
     }
     render() {
         return (
